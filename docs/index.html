@@ -6,18 +6,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container fade-in">
     <h1 class="title">
       Hello from <span class="highlight">The Netman Chronicles 👋</span>
     </h1>
 
     <p class="subtitle">
       Our secure remote team is connected via 
-      <strong>Tailscale1 VPN</strong> 🌐 and deployed this site with 
-      <strong>Netlify</strong> ⚡!
+      <strong>Tailscale VPN</strong> and deployed this site with 
+      <strong>GitHub</strong>!
     </p>
 
-    <button class="deploy-btn">Pass Hands-On</button>
+    <button class="deploy-btn" id="deployBtn">Pass Hands-On</button>
 
     <div class="member-list">
       <h2>👥 Team Members</h2>
@@ -26,42 +26,87 @@
         <li>WhiteBeard Boquecosa</li>
         <li>Reel Saldaña</li>
         <li>Kyer Ivan OppenJayme</li>
-        <li>Igneous Soco</li>
-        <li>___________________</li>
+        <!-- <li>Igneous Soco</li> -->
       </ul>
     </div>
   </div>
 
   <footer>
-    <p>🔒 Secured by VPN | ✅ Verified by MFA | 🚀 Deployed on Netlify</p>
+    <p>🔒 Secured by Tailscale VPN | ✅ Verified by MFA | 🚀 Deployed on GitHub</p>
   </footer>
 
   <!-- MFA Popup -->
   <div class="mfa-popup" id="mfaPopup">
-    <div class="popup-content">
+    <div class="popup-content slide-up">
       <h2>🔐 Multi-Factor Authentication</h2>
-      <p>A PIN has been sent to your email for verification.</p>
-      <button id="okBtn">OK</button>
+      <p id="mfaMessage">A PIN is being sent to your mobile number...</p>
+
+      <div class="pin-input hidden" id="pinInput">
+        <input type="text" id="pinField" maxlength="6" placeholder="Enter 6-digit PIN" />
+        <button id="verifyBtn">Verify</button>
+      </div>
+
+      <div class="loading-spinner" id="spinner"></div>
     </div>
   </div>
 
   <script>
-    const btn = document.querySelector('.deploy-btn');
+    const btn = document.getElementById('deployBtn');
     const popup = document.getElementById('mfaPopup');
-    const okBtn = document.getElementById('okBtn');
+    const mfaMsg = document.getElementById('mfaMessage');
+    const pinSection = document.getElementById('pinInput');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const spinner = document.getElementById('spinner');
+    const pinField = document.getElementById('pinField');
 
+    const MFA_CODE = "911420";
+    let verified = false; // track session state
+
+    // If verified already, show the state instantly
+    function setVerifiedState() {
+      btn.classList.add('active');
+      btn.textContent = '✅ MFA Verified';
+      btn.disabled = true;
+    }
+
+    // Click on main button
     btn.addEventListener('click', () => {
-      popup.style.display = 'flex'; // show popup
+      if (verified) return; // do nothing if already verified
+
+      popup.style.display = 'flex';
+      spinner.style.display = 'block';
+      btn.disabled = true;
+
+      // Simulate sending PIN
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        mfaMsg.textContent = 'PIN sent to your mobile number.';
+        pinSection.classList.remove('hidden');
+        pinSection.classList.add('fade-in');
+      }, 2000);
     });
 
-    okBtn.addEventListener('click', () => {
-      popup.style.display = 'none';
-      btn.classList.add('active');
-      btn.textContent = '✅ Verified';
-      setTimeout(() => {
-        btn.classList.remove('active');
-        btn.textContent = 'Pass Hands-On';
-      }, 4000);
+    // Verify PIN logic
+    verifyBtn.addEventListener('click', () => {
+      const pin = pinField.value.trim();
+
+      if (pin === MFA_CODE) {
+        verified = true; // persist until refresh
+        mfaMsg.textContent = '✅ Verified successfully!';
+        pinSection.style.display = 'none';
+        spinner.style.display = 'block';
+
+        setTimeout(() => {
+          spinner.style.display = 'none';
+          popup.style.display = 'none';
+          setVerifiedState();
+        }, 1500);
+      } else {
+        mfaMsg.textContent = '❌ Invalid PIN. Try again.';
+        mfaMsg.style.color = '#f87171';
+        pinField.classList.add('shake');
+        setTimeout(() => pinField.classList.remove('shake'), 600);
+      }
     });
   </script>
 </body>
