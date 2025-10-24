@@ -2,10 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>VPN + MFA + Deployment Demo BISMILLA</title>
+  <title>The Netman Chronicles 🚀</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="font-family:sans-serif;text-align:center;margin-top:50px;">
-  <h1>Hello from Our Secure Remote Team 👋</h1>
-  <p>THE NETMAN CHRONICLES is connected via <strong>Tailscale VPN</strong> and deployed this site with <strong>Netlify</strong>!</p>
+<body>
+  <div class="container">
+    <h1 class="title">Hello from <span>The Netman Chronicles 👋</span></h1>
+    <p class="subtitle">
+      Our secure remote team is connected via 
+      <strong>Tailscale VPN</strong> 🌐 and deployed this site with 
+      <strong>Netlify</strong> ⚡!
+    </p>
+
+    <button class="deploy-btn">Launch Secure Connection</button>
+  </div>
+
+  <footer>
+    <p>🔒 Secured by VPN | ✅ Verified by MFA | 🚀 Deployed on Netlify</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.deploy-btn');
+    btn.addEventListener('click', () => {
+      btn.classList.add('active');
+      btn.textContent = 'Connection Established 🔗';
+      setTimeout(() => {
+        btn.classList.remove('active');
+        btn.textContent = 'Launch Secure Connection';
+      }, 4000);
+    });
+  </script>
 </body>
 </html>

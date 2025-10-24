@@ -1,0 +1,109 @@
+/* === GENERAL RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === BODY === */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* === MAIN CONTAINER === */
+.container {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* === TITLE === */
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s infinite linear;
+}
+
+.title span {
+  display: block;
+  font-size: 3rem;
+  color: #00ffff;
+  animation: bounce 2s infinite;
+}
+
+/* === SUBTITLE === */
+.subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  opacity: 0.9;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+/* === BUTTON === */
+.deploy-btn {
+  background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+.deploy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
+}
+
+.deploy-btn.active {
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  box-shadow: 0 0 25px rgba(72, 239, 128, 0.8);
+}
+
+/* === FOOTER === */
+footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.9rem;
+  color: #bbb;
+  text-align: center;
+  width: 100%;
+  animation: fadeIn 3s ease-in;
+}
+
+/* === ANIMATIONS === */
+@keyframes gradientText {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
