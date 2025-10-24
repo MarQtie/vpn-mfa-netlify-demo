@@ -8,7 +8,7 @@
 
 /* === BODY === */
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
   color: white;
   height: 100vh;
   display: flex;
@@ -18,7 +18,7 @@ body {
   overflow: hidden;
 }
 
-/* === MAIN CONTAINER === */
+/* === CONTAINER === */
 .container {
   text-align: center;
   animation: fadeIn 2s ease-in-out;
@@ -29,18 +29,19 @@ body {
   font-size: 2.5rem;
   margin-bottom: 20px;
   letter-spacing: 1px;
+  color: #fff;
+}
+
+.highlight {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
   background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientText 3s infinite linear;
-}
-
-.title span {
-  display: block;
-  font-size: 3rem;
-  color: #00ffff;
-  animation: bounce 2s infinite;
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
 }
 
 /* === SUBTITLE === */
@@ -49,7 +50,7 @@ body {
   max-width: 600px;
   margin: 0 auto 40px;
   line-height: 1.6;
-  opacity: 0.9;
+  opacity: 0.95;
   animation: fadeInUp 2s ease-in-out;
 }
 
@@ -76,6 +77,39 @@ body {
   box-shadow: 0 0 25px rgba(72, 239, 128, 0.8);
 }
 
+/* === MEMBER LIST === */
+.member-list {
+  margin-top: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px 40px;
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.1);
+  animation: fadeInUp 3s ease-in-out;
+  backdrop-filter: blur(6px);
+}
+
+.member-list h2 {
+  color: #00d2ff;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.member-list ul {
+  list-style: none;
+}
+
+.member-list li {
+  padding: 8px 0;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.member-list li:hover {
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
 /* === FOOTER === */
 footer {
   position: absolute;
@@ -91,11 +125,6 @@ footer {
 @keyframes gradientText {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 @keyframes fadeIn {
