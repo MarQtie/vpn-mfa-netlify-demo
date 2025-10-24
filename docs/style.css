@@ -1,138 +1,105 @@
-/* === GENERAL RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-/* === BODY === */
 body {
-  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-  color: white;
-  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* === CONTAINER === */
 .container {
   text-align: center;
-  animation: fadeIn 2s ease-in-out;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #1e293b;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-/* === TITLE === */
 .title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  color: #fff;
+  font-size: 2rem;
 }
 
 .highlight {
-  display: block;
-  font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 3s infinite linear;
-  text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+  color: #38bdf8;
 }
 
-/* === SUBTITLE === */
 .subtitle {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-  opacity: 0.95;
-  animation: fadeInUp 2s ease-in-out;
+  margin-top: 0.5rem;
+  color: #cbd5e1;
 }
 
-/* === BUTTON === */
 .deploy-btn {
-  background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+  margin-top: 1.5rem;
+  background: #38bdf8;
+  color: #0f172a;
   border: none;
-  color: white;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .deploy-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
+  background: #0ea5e9;
 }
 
 .deploy-btn.active {
-  background: linear-gradient(90deg, #43e97b, #38f9d7);
-  box-shadow: 0 0 25px rgba(72, 239, 128, 0.8);
+  background: #22c55e;
 }
 
-/* === MEMBER LIST === */
 .member-list {
-  margin-top: 50px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0, 210, 255, 0.2);
-  border-radius: 15px;
-  padding: 25px 40px;
-  box-shadow: 0 0 25px rgba(0, 210, 255, 0.1);
-  animation: fadeInUp 3s ease-in-out;
-  backdrop-filter: blur(6px);
+  margin-top: 2rem;
+  text-align: left;
 }
 
 .member-list h2 {
-  color: #00d2ff;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
-.member-list ul {
-  list-style: none;
-}
-
-.member-list li {
-  padding: 8px 0;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.member-list li:hover {
-  color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-}
-
-/* === FOOTER === */
 footer {
-  position: absolute;
-  bottom: 10px;
+  margin-top: 2rem;
   font-size: 0.9rem;
-  color: #bbb;
+  color: #94a3b8;
+}
+
+/* MFA Popup */
+.mfa-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #1e293b;
+  padding: 2rem;
+  border-radius: 1rem;
   text-align: center;
-  width: 100%;
-  animation: fadeIn 3s ease-in;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
 
-/* === ANIMATIONS === */
-@keyframes gradientText {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+.popup-content h2 {
+  color: #38bdf8;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.popup-content button {
+  margin-top: 1rem;
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.popup-content button:hover {
+  background: #0ea5e9;
 }
